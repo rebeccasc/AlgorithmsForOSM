@@ -1,2 +1,2 @@
 # osmIndoorOptimizer
-Tool to optimize OSM indoor data 
+Library of tools to optimize OSM indoor data 
