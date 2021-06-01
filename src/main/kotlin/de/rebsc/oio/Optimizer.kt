@@ -21,7 +21,7 @@ import de.rebsc.oio.api.OSMIndoorOptimizer
 import de.rebsc.oio.data.OSMDataSet
 import de.rebsc.oio.data.OSMWay
 
-class Optimizer : OSMIndoorOptimizer {
+abstract class Optimizer : OSMIndoorOptimizer {
 
     override fun mergeOverlaps(data: OSMDataSet): OSMDataSet {
         TODO("Not yet implemented")
