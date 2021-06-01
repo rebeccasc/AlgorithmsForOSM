@@ -19,6 +19,7 @@ package de.rebsc.oio
 
 import de.rebsc.oio.api.OSMIndoorOptimizer
 import de.rebsc.oio.data.OSMDataSet
+import de.rebsc.oio.data.OSMWay
 
 class Optimizer : OSMIndoorOptimizer {
 
@@ -30,7 +31,7 @@ class Optimizer : OSMIndoorOptimizer {
         TODO("Not yet implemented")
     }
 
-    override fun orthogonalizeShape(data: OSMDataSet): OSMDataSet {
+    override fun orthogonalizeShape(way: OSMWay): OSMWay {
         TODO("Not yet implemented")
     }
 

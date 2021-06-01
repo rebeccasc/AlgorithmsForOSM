@@ -18,6 +18,7 @@ package de.rebsc.oio.api
  *****************************************************************************/
 
 import de.rebsc.oio.data.OSMDataSet
+import de.rebsc.oio.data.OSMWay
 
 interface OSMIndoorOptimizer {
 
@@ -37,10 +38,10 @@ interface OSMIndoorOptimizer {
     fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet
 
     /**
-     * Orthogonalize shape of objects
-     * @param data set to optimize
-     * @return optimized data set
+     * Orthogonalize shape of way
+     * @param way to optimize
+     * @return optimized way
      */
-    fun orthogonalizeShape(data: OSMDataSet): OSMDataSet
+    fun orthogonalizeShape(way: OSMWay): OSMWay
 
 }
