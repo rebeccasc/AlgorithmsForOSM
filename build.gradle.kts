@@ -33,6 +33,8 @@ sourceSets {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    implementation(group="org.locationtech.jts", name="jts-core", version="1.18.1")
+
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.2.0")
