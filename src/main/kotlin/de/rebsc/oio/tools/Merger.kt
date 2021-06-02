@@ -60,12 +60,17 @@ class Merger {
                     union.coordinates.forEach { c ->
                         mergedWay.points.add(OSMNode(IdGenerator.createUUID(true), Point2D(c.x, c.y)))
                     }
+                    mergedWay.points.removeLast()
+                    mergedWay.points.add(mergedWay.points[0])
 
                     data.nodes.removeAll(data.ways[j].points)
                     data.ways.removeAt(j)
                     data.nodes.removeAll(data.ways[i].points)
                     data.ways.removeAt(i)
-                    data.nodes.addAll(mergedWay.points.dropLast(1))
+
+                    val nodesWithoutLast = deepCopy(mergedWay.points)
+                    nodesWithoutLast.removeLast()
+                    data.nodes.addAll(nodesWithoutLast)
                     data.ways.add(mergedWay)
                 }
             }
@@ -81,6 +86,23 @@ class Merger {
          */
         fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet {
             TODO("Not yet implemented")
+        }
+
+
+        // helper
+
+        /**
+         * Creates deep copy of [OSMNode] list
+         * @param list to create copy of
+         * @return deep copy of list
+         */
+        private fun deepCopy(list: ArrayList<OSMNode>): ArrayList<OSMNode> {
+            val deepCopyList = ArrayList<OSMNode>()
+            val copy = list.map { it.copy() }
+            copy.forEach { node ->
+                deepCopyList.add(node)
+            }
+            return deepCopyList
         }
 
     }
