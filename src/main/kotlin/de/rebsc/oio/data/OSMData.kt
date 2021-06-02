@@ -57,32 +57,6 @@ class OSMWay(val id: Long, val points: ArrayList<OSMNode>, val tags: ArrayList<O
 
     constructor(id: Long, nodes: ArrayList<OSMNode>) : this(id, nodes, ArrayList<OSMTag>())
     constructor(id: Long) : this(id, ArrayList<OSMNode>(), ArrayList<OSMTag>())
-
-    /**
-     * Gets intersection points of this and [way]
-     * @param way to get intersections with
-     * @return array with intersection points, empty if none
-     */
-    fun intersects(way: OSMWay): ArrayList<Point2D> {
-        val coord1 = arrayOfNulls<Coordinate>(this.points.size)
-        for (i in 0 until this.points.size) {
-            coord1[i] = Coordinate(this.points[i].x, this.points[i].y)
-        }
-        val coord2 = arrayOfNulls<Coordinate>(way.points.size)
-        for (i in 0 until way.points.size) {
-            coord2[i] = Coordinate(way.points[i].x, way.points[i].y)
-        }
-        val poly1 = GeometryFactory().createLinearRing(coord1)
-        val poly2 = GeometryFactory().createLinearRing(coord2)
-
-        val intersectingPoints = poly1.intersection(poly2)
-
-        val intersects = ArrayList<Point2D>()
-        intersectingPoints.coordinates.forEach { c ->
-            intersects.add(Point2D(c.x, c.y))
-        }
-        return intersects
-    }
 }
 
 /**
