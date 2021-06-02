@@ -20,6 +20,7 @@ package de.rebsc.oio
 import de.rebsc.oio.data.OSMDataSet
 import de.rebsc.oio.data.OSMNode
 import de.rebsc.oio.data.OSMWay
+import de.rebsc.oio.utils.Exporter
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
@@ -85,6 +86,10 @@ internal class OptimizerTest {
         for (i in 0 until actualWays.size) {
             assertTrue(assertEqualsPoints(optimizedData.ways[i].points, actualWays[i].points))
         }
+
+        // export for development purpose only
+        val filename = "${System.getProperty("user.dir")}\\src\\test\\output\\mergeOverlapsTest.osm"
+        Exporter.exportOSM(filename, optimizedData, addTimestamp = false)
     }
 
     @Test

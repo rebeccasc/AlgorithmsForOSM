@@ -1,9 +1,5 @@
 package de.rebsc.oio.data
 
-import org.locationtech.jts.geom.Coordinate
-import org.locationtech.jts.geom.GeometryFactory
-
-
 /******************************************************************************
  * Copyright (C) 2021  de.rebsc
  *
