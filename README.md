@@ -43,8 +43,8 @@ fun orthogonalizeShape(way: OSMWay): OSMWay
 
 ```kotlin
 // merge overlapping areas in data set
-myData = OSMDataSet()
-myDataOptimized = Optimizer.mergeOverlaps(myData)
+val myData = OSMDataSet()
+val myDataOptimized = Optimizer().mergeOverlaps(myData)
 ```
 
 ## Authors
