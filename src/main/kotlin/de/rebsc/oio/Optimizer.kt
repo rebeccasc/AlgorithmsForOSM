@@ -20,11 +20,12 @@ package de.rebsc.oio
 import de.rebsc.oio.api.OSMIndoorOptimizer
 import de.rebsc.oio.data.OSMDataSet
 import de.rebsc.oio.data.OSMWay
+import de.rebsc.oio.tools.Merger
 
-abstract class Optimizer : OSMIndoorOptimizer {
+class Optimizer : OSMIndoorOptimizer {
 
     override fun mergeOverlaps(data: OSMDataSet): OSMDataSet {
-        TODO("Not yet implemented")
+        return Merger.mergeOverlaps(data)
     }
 
     override fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet {
