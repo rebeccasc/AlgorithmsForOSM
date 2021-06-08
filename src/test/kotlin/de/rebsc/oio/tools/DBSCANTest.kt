@@ -22,12 +22,14 @@ import de.rebsc.oio.utils.Importer
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import java.io.File
 
 internal class DBSCANTest {
 
     @Test
     fun performClusteringTest() {
-        val filename = "${System.getProperty("user.dir")}\\src\\test\\resources\\merge_close_nodes_test.osm"
+        val s = File.separator
+        val filename = "${System.getProperty("user.dir")}${s}src${s}test${s}resources${s}merge_close_nodes_test.osm"
         val dataset = Importer.importOSM(filename)
         val points = ArrayList<Point2D>()
         dataset.nodes.forEach { node -> points.add(Point2D(node.x, node.y)) }
