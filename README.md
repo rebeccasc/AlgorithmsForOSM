@@ -47,6 +47,9 @@ val myData = OSMDataSet()
 val myDataOptimized = Optimizer().mergeOverlaps(myData)
 ```
 
+## Dependencies
+* [JTS Topology Suite](https://github.com/locationtech/jts)
+
 ## Authors
 Rebecca Schmidt (rebeccasmdt@gmail.com)
 
