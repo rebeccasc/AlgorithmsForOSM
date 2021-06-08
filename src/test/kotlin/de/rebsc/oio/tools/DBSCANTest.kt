@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Assertions.*
 internal class DBSCANTest {
 
     @Test
-    fun performClustering() {
+    fun performClusteringTest() {
         val filename = "${System.getProperty("user.dir")}\\src\\test\\resources\\merge_close_nodes_test.osm"
         val dataset = Importer.importOSM(filename)
         val points = ArrayList<Point2D>()

@@ -129,7 +129,7 @@ class DBSCAN {
      * @param lon1 longitude of coordinate 1
      * @param lon2 longitude of coordinate 2
      * @param el1 elevation of coordinate 1
-     * @param el2 eleveation of coordinate 2
+     * @param el2 elevation of coordinate 2
      * @return distance in meter
      */
     private fun distance(

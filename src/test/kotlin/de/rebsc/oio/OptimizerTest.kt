@@ -78,7 +78,7 @@ internal class OptimizerTest {
 
 
     @Test
-    fun mergeOverlaps() {
+    fun mergeOverlapsTest() {
         val data = OSMDataSet(nodes, ways)
         val optimizedData = Optimizer().mergeOverlaps(data)
 
@@ -93,15 +93,22 @@ internal class OptimizerTest {
     }
 
     @Test
-    fun mergeCloseNodes() {
+    fun mergeCloseNodesTest() {
+        // TODO
     }
 
     @Test
-    fun orthogonalizeShape() {
+    fun orthogonalizeShapeTest() {
+        // TODO
     }
 
-    // helper
+    @Test
+    fun clusterPointsByDBSCANTest() {
+        // test located in DBSCANTest.kt
+    }
 
+
+    // helper
     private fun assertEqualsPoints(points1: ArrayList<OSMNode>, points2: ArrayList<OSMNode>): Boolean {
         if (points1.size != points2.size) return false
         for (i in points1.indices) {
