@@ -20,6 +20,8 @@ package de.rebsc.oio
 import de.rebsc.oio.api.OSMIndoorOptimizer
 import de.rebsc.oio.data.OSMDataSet
 import de.rebsc.oio.data.OSMWay
+import de.rebsc.oio.data.Point2D
+import de.rebsc.oio.tools.DBSCAN
 import de.rebsc.oio.tools.Merger
 
 class Optimizer : OSMIndoorOptimizer {
@@ -34,6 +36,14 @@ class Optimizer : OSMIndoorOptimizer {
 
     override fun orthogonalizeShape(way: OSMWay): OSMWay {
         TODO("Not yet implemented")
+    }
+
+    override fun clusterPointsByDBSCAN(
+        points: ArrayList<Point2D>,
+        maxDistance: Double,
+        minPoints: Int
+    ): ArrayList<ArrayList<Point2D>> {
+        return DBSCAN().performClustering(points, maxDistance, minPoints)
     }
 
 }

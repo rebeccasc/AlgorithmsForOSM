@@ -19,6 +19,7 @@ package de.rebsc.oio.api
 
 import de.rebsc.oio.data.OSMDataSet
 import de.rebsc.oio.data.OSMWay
+import de.rebsc.oio.data.Point2D
 
 interface OSMIndoorOptimizer {
 
@@ -43,5 +44,18 @@ interface OSMIndoorOptimizer {
      * @return optimized way
      */
     fun orthogonalizeShape(way: OSMWay): OSMWay
+
+    /**
+     * Cluster set of points with using DBSCAN clustering algorithm
+     * @param points to cluster
+     * @param maxDistance of cluster in meter. Needs to be greater than 0.0
+     * @param minPoints kept in one cluster. Needs to be greater than 1
+     * @return [ArrayList] holding determined clusters as [ArrayList]s including points
+     */
+    fun clusterPointsByDBSCAN(
+        points: ArrayList<Point2D>,
+        maxDistance: Double,
+        minPoints: Int
+    ): ArrayList<ArrayList<Point2D>>
 
 }
