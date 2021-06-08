@@ -1,4 +1,4 @@
-# OSMIndoorOptimizer
+# OIO - OSMIndoorOptimizer
 [![CI](https://github.com/rebeccasc/OSMIndoorOptimizer/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/rebeccasc/OSMIndoorOptimizer/actions/workflows/gradle.yml)
 [![license: AGPLv3](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat-square&maxAge=7200)](https://github.com/rebeccasc/OSMIndoorOptimizer/blob/master/LICENSE)
 
@@ -8,6 +8,7 @@ Library of tools to optimize OSM indoor data
 * Merge overlapping areas
 * Merge close nodes to reduce data set complexity 
 * Orthogonalize shape of ways
+* Clustering nodes by DBSCAN clustering algorithm
 
 _Looking for another tool? Add one by creating a pull request or share your idea in a new issue!_
 
@@ -38,6 +39,20 @@ fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet
  * @return optimized way
  */
 fun orthogonalizeShape(way: OSMWay): OSMWay
+
+/**
+ * Cluster set of points with using DBSCAN clustering algorithm
+ * @param points to cluster
+ * @param maxDistance of cluster in meter. Needs to be greater than 0.0
+ * @param minPoints kept in one cluster. Needs to be greater than 1
+ * @return [ArrayList] holding determined clusters as [ArrayList]s including points
+ */
+fun clusterPointsByDBSCAN(
+    points: ArrayList<Point2D>,
+    maxDistance: Double,
+    minPoints: Int
+): ArrayList<ArrayList<Point2D>>
+    
 ```
 ### Example
 
