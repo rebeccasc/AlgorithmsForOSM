@@ -110,7 +110,7 @@ internal class OptimizerTest {
         assertEquals(mergedNodesData.ways[2].points.size, 2)
 
         // export for development purpose only
-        val outFilepath = "${System.getProperty("user.dir")}${s}src${s}test${s}output${s}mergeCloseNodesTest.osm"
+        val outFilepath = "${System.getProperty("user.dir")}\\src\\test\\output\\mergeCloseNodesTest.osm"
         Exporter.exportOSM(outFilepath, mergedNodesData, addTimestamp = false)
     }
 
