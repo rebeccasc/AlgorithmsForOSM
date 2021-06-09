@@ -98,7 +98,7 @@ internal class OptimizerTest {
 
     @Test
     fun mergeCloseNodesTest() {
-        val inFilepath = "${System.getProperty("user.dir")}${s}src${s}test${s}resources${s}merge_close_nodes_test.osm"
+        val inFilepath = "${System.getProperty("user.dir")}\\src\\test\\resources\\merge_close_nodes_test.osm"
         val data = Importer.importOSM(inFilepath)
         val mergedNodesData = Optimizer().mergeCloseNodes(data, 0.2)
 
