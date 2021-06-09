@@ -92,7 +92,7 @@ internal class OptimizerTest {
         }
 
         // export for development purpose only
-        val filename = "${System.getProperty("user.dir")}${s}src${s}test${s}output${s}mergeOverlapsTest.osm"
+        val filename = "${System.getProperty("user.dir")}\\src\\test\\output\\mergeOverlapsTest.osm"
         Exporter.exportOSM(filename, optimizedData, addTimestamp = false)
     }
 
@@ -101,7 +101,7 @@ internal class OptimizerTest {
         val inFilepath = "${System.getProperty("user.dir")}${s}src${s}test${s}resources${s}merge_close_nodes_test.osm"
         val data = Importer.importOSM(inFilepath)
         val mergedNodesData = Optimizer().mergeCloseNodes(data, 0.2)
-        
+
         // do just very basic tests for now
         assertEquals(mergedNodesData.ways.size, data.ways.size)
         assertEquals(mergedNodesData.nodes.size, 11)
