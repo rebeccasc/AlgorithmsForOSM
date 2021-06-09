@@ -1,5 +1,6 @@
 package de.rebsc.oio.data
 
+
 /******************************************************************************
  * Copyright (C) 2021  de.rebsc
  *
@@ -35,14 +36,29 @@ class OSMDataSet(val nodes: ArrayList<OSMNode>, val ways: ArrayList<OSMWay>) {
     fun addWay(way: OSMWay) {
         ways.add(way)
     }
+
+    fun copy(): OSMDataSet {
+        val copy = OSMDataSet()
+        val nodesCopy = ArrayList<OSMNode>()
+        val waysCopy = ArrayList<OSMWay>()
+        this.nodes.forEach { node -> nodesCopy.add(OSMNode(node.id, node.x, node.y, node.tags)) }
+        this.ways.forEach { way ->
+            val nodesOfWayCopy = ArrayList<OSMNode>()
+            way.points.forEach { point -> nodesOfWayCopy.add(OSMNode(point.id, point.x, point.y, point.tags)) }
+            waysCopy.add(OSMWay(way.id, nodesOfWayCopy, way.tags))
+        }
+        copy.addNodes(nodesCopy)
+        copy.addWays(waysCopy)
+        return copy
+    }
 }
 
 /**
  * Node holding coordinates and tags
  */
-data class OSMNode(val id: Long, val x: Double, val y: Double, val tags: List<OSMTag>) {
+data class OSMNode(val id: Long, val x: Double, val y: Double, val tags: ArrayList<OSMTag>) {
 
-    constructor(id: Long, point: Point2D, tags: List<OSMTag>) : this(id, point.x, point.y, tags)
+    constructor(id: Long, point: Point2D, tags: ArrayList<OSMTag>) : this(id, point.x, point.y, tags)
     constructor(id: Long, point: Point2D) : this(id, point.x, point.y, ArrayList<OSMTag>())
 }
 
