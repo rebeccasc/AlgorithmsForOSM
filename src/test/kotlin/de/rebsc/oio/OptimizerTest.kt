@@ -29,8 +29,6 @@ import java.io.File
 
 internal class OptimizerTest {
 
-    val s = File.separator
-
     // Setup test data
     private val nodes = ArrayList<OSMNode>().apply {
         add(OSMNode(-101784, 12.91258056743, 50.82462614568, ArrayList()))
@@ -98,7 +96,8 @@ internal class OptimizerTest {
 
     @Test
     fun mergeCloseNodesTest() {
-        val inFilepath = "${System.getProperty("user.dir")}\\src\\test\\resources\\merge_close_nodes_test.osm"
+        val s = File.separator
+        val inFilepath = "${System.getProperty("user.dir")}${s}src${s}test${s}resources${s}merge_close_nodes_test.osm"
         val data = Importer.importOSM(inFilepath)
         val mergedNodesData = Optimizer().mergeCloseNodes(data, 0.2)
 
