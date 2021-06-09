@@ -49,7 +49,7 @@ interface OSMIndoorOptimizer {
      * Cluster set of points with using DBSCAN clustering algorithm
      * @param points to cluster
      * @param maxDistance of cluster in meter. Needs to be greater than 0.0
-     * @param minPoints kept in one cluster. Needs to be greater than 1
+     * @param minPoints kept in one cluster. Needs to be greater than 0
      * @return [ArrayList] holding determined clusters as [ArrayList]s including points
      */
     fun clusterPointsByDBSCAN(
