@@ -33,65 +33,7 @@ class Optimizer : OSMIndoorOptimizer {
     }
 
     override fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet {
-        val dataClone = data.copy()
-
-        // cluster points
-        val points = ArrayList<Point2D>()
-        data.nodes.forEach { node -> points.add(Point2D(node.x, node.y)) }
-        val clusteredData = DBSCAN().performClustering(points, mergeDistance, 1)
-
-        // merge points in cluster
-        clusteredData.forEach { cluster ->
-            if (cluster.isEmpty()) throw OptimizerException("Found empty cluster")
-            if (cluster.size < 2) return@forEach
-
-            // get centroid
-            val allX = ArrayList<Double>()
-            val allY = ArrayList<Double>()
-            cluster.forEach { point ->
-                allX.add(point.x)
-                allY.add(point.y)
-            }
-            val nodeToGetTagsFrom = (data.nodes.filter { it.x == cluster[0].x && it.y == cluster[0].y })[0]
-            val centroidNode = OSMNode(
-                IdGenerator.createUUID(true),
-                Point2D(allX.average(), allY.average()),
-                nodeToGetTagsFrom.tags
-            )
-
-            // replace nodes
-            data.nodes.forEach { point ->
-                cluster.forEach { clusterPoint ->
-                    if (point.x == clusterPoint.x && point.y == clusterPoint.y) {
-                        dataClone.nodes.remove(point)
-                    }
-                }
-            }
-            dataClone.nodes.add(centroidNode)
-
-            // replace nodes in ways
-            for (i in data.ways.indices) {
-                val way = data.ways[i]
-                for (j in way.points.indices) {
-                    val point = way.points[j]
-                    val inCluster = cluster.filter { cPoint -> cPoint.x == point.x && cPoint.y == point.y }
-                    if (inCluster.isNotEmpty()) {
-                        val includesCentroid =
-                            way.points.filter { wPoint -> wPoint.x == centroidNode.x && wPoint.y == centroidNode.y }
-                        if (includesCentroid.isNotEmpty()) {
-                            // remove
-                            dataClone.ways[i].points.remove(dataClone.ways[i].points[j])
-                        } else {
-                            // replace
-                            dataClone.ways[i].points[j] = centroidNode
-                        }
-                    }
-                }
-            }
-
-        }
-
-        return dataClone
+        return Merger.mergeCloseNodes(data, mergeDistance)
     }
 
     override fun orthogonalizeShape(way: OSMWay): OSMWay {
@@ -106,5 +48,4 @@ class Optimizer : OSMIndoorOptimizer {
         return DBSCAN().performClustering(points, maxDistance, minPoints)
     }
 
-    class OptimizerException(msg: String) : Exception(msg)
 }
