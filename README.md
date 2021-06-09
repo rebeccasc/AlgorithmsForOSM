@@ -7,7 +7,7 @@ Library of tools to optimize OSM indoor data
 ## Tools
 * Merge overlapping areas
 * Merge close nodes to reduce data set complexity 
-* Orthogonalize shape of ways
+* (Orthogonalize shape of ways) - **Not yet implemented**
 * Clustering nodes by DBSCAN clustering algorithm
 
 _Looking for another tool? Add one by creating a pull request or share your idea in a new issue!_
@@ -38,13 +38,13 @@ fun mergeCloseNodes(data: OSMDataSet, mergeDistance: Double): OSMDataSet
  * @param way to optimize
  * @return optimized way
  */
-fun orthogonalizeShape(way: OSMWay): OSMWay
+// fun orthogonalizeShape(way: OSMWay): OSMWay  // Not yet implemented
 
 /**
  * Cluster set of points with using DBSCAN clustering algorithm
  * @param points to cluster
  * @param maxDistance of cluster in meter. Needs to be greater than 0.0
- * @param minPoints kept in one cluster. Needs to be greater than 1
+ * @param minPoints kept in one cluster. Needs to be greater than 0
  * @return [ArrayList] holding determined clusters as [ArrayList]s including points
  */
 fun clusterPointsByDBSCAN(
