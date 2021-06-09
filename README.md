@@ -14,8 +14,6 @@ _Looking for another tool? Add one by creating a pull request or share your idea
 
 ## How to use
 
-:construction: **In the development stage** :construction:
-
 ### API
 ```kotlin
 /**
