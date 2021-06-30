@@ -1,4 +1,4 @@
-# OIO - OSMIndoorOptimizer
+# OIO - OSMIndoorOptimizer Tools
 [![CI](https://github.com/rebeccasc/OSMIndoorOptimizer/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/rebeccasc/OSMIndoorOptimizer/actions/workflows/gradle.yml)
 [![license: AGPLv3](https://img.shields.io/badge/license-AGPLv3-blue.svg?style=flat-square&maxAge=7200)](https://github.com/rebeccasc/OSMIndoorOptimizer/blob/master/LICENSE)
 
